@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zebra / Einstein Riddles</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%234f46e5'/%3E%3Cg fill='white'%3E%3Crect x='7' y='7' width='7' height='7' rx='1.5'/%3E%3Crect x='18' y='7' width='7' height='7' rx='1.5'/%3E%3Crect x='7' y='18' width='7' height='7' rx='1.5'/%3E%3Crect x='18' y='18' width='7' height='7' rx='1.5'/%3E%3C/g%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">▦</span>
+        <div class="brand-text">
+          <h1 id="puzzle-title">Zebra</h1>
+          <p id="progress" class="progress"></p>
+        </div>
+      </div>
+      <div class="toolbar">
+        <button id="btn-undo" class="btn" type="button" title="Undo (Ctrl+Z)">Undo</button>
+        <button id="btn-redo" class="btn" type="button" title="Redo (Ctrl+Shift+Z)">Redo</button>
+        <span class="sep" aria-hidden="true"></span>
+        <label class="switch">
+          <input type="checkbox" id="toggle-eliminated" />
+          <span>Show eliminated</span>
+        </label>
+        <span class="sep" aria-hidden="true"></span>
+        <button id="btn-load" class="btn" type="button">Load puzzle</button>
+        <button id="btn-edit" class="btn" type="button">Edit JSON</button>
+        <button id="btn-reset" class="btn danger" type="button">Reset</button>
+      </div>
+    </header>
+
+    <div id="contradictions" class="banner" hidden></div>
+
+    <main>
+      <section class="panel grid-panel">
+        <div class="table-scroll">
+          <table id="grid" class="grid"></table>
+        </div>
+        <p class="hint">
+          Click a value to eliminate it. Click the empty part of a cell to edit its candidates.
+          <kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes.
+        </p>
+      </section>
+
+      <section class="panel clues-panel">
+        <div class="panel-head">
+          <h2>Clues</h2>
+          <span id="clue-count" class="muted"></span>
+        </div>
+        <div id="clue-list" class="clue-list"></div>
+      </section>
+    </main>
+
+    <div id="popover" class="popover" hidden></div>
+    <div id="toast" class="toast" hidden></div>
+
+    <div id="solved-overlay" class="solved-overlay" hidden>
+      <div class="confetti" id="confetti" aria-hidden="true"></div>
+      <div class="solved-card" role="dialog" aria-modal="true" aria-labelledby="solved-title">
+        <div class="solved-badge" aria-hidden="true">✓</div>
+        <h2 id="solved-title">Puzzle solved</h2>
+        <p id="solved-subtitle" class="muted"></p>
+        <div class="solved-actions">
+          <button type="button" class="btn primary" id="btn-solved-close">Keep looking</button>
+          <button type="button" class="btn" id="btn-solved-reset">Start over</button>
+        </div>
+      </div>
+    </div>
+
+    <dialog id="load-dialog">
+      <div class="dialog-inner">
+        <h2>Load puzzle</h2>
+        <p class="muted">
+          Paste the puzzle JSON (categories and clues), choose a file, or pick a bundled sample.
+          Press <strong>Load</strong> to start the puzzle. The LLM prompt button copies a format
+          description you can send with a screenshot.
+        </p>
+        <textarea id="load-json" spellcheck="false" placeholder='{ "title": "…", "categories": [ … ], "clues": [ … ] }'></textarea>
+        <ul id="load-errors" class="errors" hidden></ul>
+        <p id="load-status" class="load-status" hidden></p>
+        <div class="dialog-actions">
+          <input type="file" id="load-file" accept=".json,application/json" hidden />
+          <button type="button" class="btn" id="btn-pick-file">Choose file</button>
+          <span class="menu-wrap">
+            <button
+              type="button"
+              class="btn"
+              id="btn-sample"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Load sample
+            </button>
+            <div id="sample-menu" class="menu" role="menu" hidden>
+              <button type="button" class="menu-item" role="menuitem" data-file="tiny.json">
+                <span class="menu-title">Tiny 1×4</span>
+                <span class="menu-sub">4 positions · 1 category · 4 clues (test)</span>
+              </button>
+              <button type="button" class="menu-item" role="menuitem" data-file="passengers.json">
+                <span class="menu-title">Passengers</span>
+                <span class="menu-sub">4 positions · 4 categories · 11 clues</span>
+              </button>
+              <button type="button" class="menu-item" role="menuitem" data-file="librarians.json">
+                <span class="menu-title">Librarians</span>
+                <span class="menu-sub">5 positions · 6 categories · 22 clues</span>
+              </button>
+              <button type="button" class="menu-item" role="menuitem" data-file="neighbors.json">
+                <span class="menu-title">Neighbors</span>
+                <span class="menu-sub">5 positions · 6 categories · 22 clues</span>
+              </button>
+              <button type="button" class="menu-item" role="menuitem" data-file="houses.json">
+                <span class="menu-title">Houses</span>
+                <span class="menu-sub">5 positions · 6 categories · 25 clues</span>
+              </button>
+            </div>
+          </span>
+          <button type="button" class="btn" id="btn-prompt">LLM prompt</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn" id="btn-cancel-load">Cancel</button>
+          <button type="button" class="btn primary" id="btn-apply-load">Load</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="prompt-dialog">
+      <div class="dialog-inner">
+        <h2>Give this to your LLM</h2>
+        <p class="muted">Attach the puzzle screenshot and send this prompt with the image.</p>
+        <textarea id="prompt-text" spellcheck="false" readonly></textarea>
+        <div class="dialog-actions">
+          <span class="spacer"></span>
+          <button type="button" class="btn" id="btn-close-prompt">Close</button>
+          <button type="button" class="btn primary" id="btn-copy-prompt">Copy prompt</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

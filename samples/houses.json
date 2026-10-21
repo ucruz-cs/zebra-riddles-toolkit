@@ -1,0 +1,124 @@
+{
+  "title": "Houses",
+  "positions": { "label": "House", "labels": ["#1", "#2", "#3", "#4", "#5"] },
+  "categories": [
+    { "id": "color", "label": "Color", "values": ["Green", "Orange", "Red", "White", "Yellow"] },
+    {
+      "id": "animal",
+      "label": "Animal",
+      "values": ["Flamingo", "Monkey", "Elephant", "Zebra", "Fox"]
+    },
+    {
+      "id": "nationality",
+      "label": "Nationality",
+      "values": ["Chinese", "Danish", "Japanese", "Mexican", "British"]
+    },
+    { "id": "breakfast", "label": "Breakfast", "values": ["Bagel", "Omelet", "Egg", "Pancake", "Toast"] },
+    { "id": "dessert", "label": "Dessert", "values": ["Donut", "Pie", "Candy", "Pudding", "Cake"] },
+    { "id": "drink", "label": "Drink", "values": ["Coffee", "Iced", "Herbal", "Boba", "Water"] }
+  ],
+  "clues": [
+    {
+      "text": "The person whose favorite drink is Coffee is adjacent to the Fox lover.",
+      "constraints": [{ "type": "nextTo", "a": "drink:Coffee", "b": "animal:Fox" }]
+    },
+    {
+      "text": "The man who is British is the person who loves Pie.",
+      "constraints": [{ "type": "same", "a": "nationality:British", "b": "dessert:Pie" }]
+    },
+    {
+      "text": "The person who enjoys Donut is somewhere to the right of the one whose favorite drink is Boba.",
+      "constraints": [{ "type": "rightOf", "a": "dessert:Donut", "b": "drink:Boba" }]
+    },
+    {
+      "text": "The man who adores the Monkey is beside the one who craves Pudding.",
+      "constraints": [{ "type": "nextTo", "a": "animal:Monkey", "b": "dessert:Pudding" }]
+    },
+    {
+      "text": "The man who adores the Fox is the man who loves Omelet for breakfast.",
+      "constraints": [{ "type": "same", "a": "animal:Fox", "b": "breakfast:Omelet" }]
+    },
+    {
+      "text": "The person who craves Cake is directly to the right of the British.",
+      "constraints": [{ "type": "immediatelyAfter", "a": "dessert:Cake", "b": "nationality:British" }]
+    },
+    {
+      "text": "The neighbor who loves Pudding lives in one of the corner houses.",
+      "constraints": [{ "type": "at", "subject": "dessert:Pudding", "positions": "ends" }]
+    },
+    {
+      "text": "The neighbor who loves the Fox lives next to the neighbor who is Chinese.",
+      "constraints": [{ "type": "nextTo", "a": "animal:Fox", "b": "nationality:Chinese" }]
+    },
+    {
+      "text": "The Japanese resident lives beside the Orange house.",
+      "constraints": [{ "type": "nextTo", "a": "nationality:Japanese", "b": "color:Orange" }]
+    },
+    {
+      "text": "The one whose favorite drink is Iced is located somewhere between the man who enjoys Donut and the White house, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "drink:Iced", "after": "dessert:Donut", "before": "color:White" }
+      ]
+    },
+    {
+      "text": "The man who is Mexican is adjacent to the Flamingo fan.",
+      "constraints": [{ "type": "nextTo", "a": "nationality:Mexican", "b": "animal:Flamingo" }]
+    },
+    {
+      "text": "The one whose favorite drink is Water lives next to the White house.",
+      "constraints": [{ "type": "nextTo", "a": "drink:Water", "b": "color:White" }]
+    },
+    {
+      "text": "The man who is Danish is in one of the corner houses.",
+      "constraints": [{ "type": "at", "subject": "nationality:Danish", "positions": "ends" }]
+    },
+    {
+      "text": "The man whose favorite drink is Herbal lives in one of the corner houses.",
+      "constraints": [{ "type": "at", "subject": "drink:Herbal", "positions": "ends" }]
+    },
+    {
+      "text": "The one who loves Pudding is directly to the right of the Red house.",
+      "constraints": [{ "type": "immediatelyAfter", "a": "dessert:Pudding", "b": "color:Red" }]
+    },
+    {
+      "text": "The person who loves the Zebra is somewhere to the right of the Red house.",
+      "constraints": [{ "type": "rightOf", "a": "animal:Zebra", "b": "color:Red" }]
+    },
+    {
+      "text": "The man who is Chinese is somewhere to the right of the man who loves Donut.",
+      "constraints": [{ "type": "rightOf", "a": "nationality:Chinese", "b": "dessert:Donut" }]
+    },
+    {
+      "text": "The neighbor who loves Egg for breakfast lives next to the Green house.",
+      "constraints": [{ "type": "nextTo", "a": "breakfast:Egg", "b": "color:Green" }]
+    },
+    {
+      "text": "The neighbor who loves Bagel for breakfast is somewhere to the right of the person who craves Donut.",
+      "constraints": [{ "type": "rightOf", "a": "breakfast:Bagel", "b": "dessert:Donut" }]
+    },
+    {
+      "text": "The man whose favorite drink is Iced is beside the neighbor who loves Bagel for breakfast.",
+      "constraints": [{ "type": "nextTo", "a": "drink:Iced", "b": "breakfast:Bagel" }]
+    },
+    {
+      "text": "The neighbor who adores the Zebra is somewhere to the right of the one who loves Toast for breakfast.",
+      "constraints": [{ "type": "rightOf", "a": "animal:Zebra", "b": "breakfast:Toast" }]
+    },
+    {
+      "text": "The neighbor who is Mexican is in one of the end houses.",
+      "constraints": [{ "type": "at", "subject": "nationality:Mexican", "positions": "ends" }]
+    },
+    {
+      "text": "The neighbor who drinks Herbal is somewhere to the right of the Elephant lover.",
+      "constraints": [{ "type": "rightOf", "a": "drink:Herbal", "b": "animal:Elephant" }]
+    },
+    {
+      "text": "The neighbor who craves Cake is somewhere to the right of the man who only drinks Iced.",
+      "constraints": [{ "type": "rightOf", "a": "dessert:Cake", "b": "drink:Iced" }]
+    },
+    {
+      "text": "The Green house is somewhere to the right of the neighbor who enjoys Toast for breakfast.",
+      "constraints": [{ "type": "rightOf", "a": "color:Green", "b": "breakfast:Toast" }]
+    }
+  ]
+}

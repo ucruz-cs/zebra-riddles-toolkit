@@ -1,0 +1,25 @@
+{
+  "title": "Tiny 1×4",
+  "positions": { "label": "Slot", "labels": ["#1", "#2", "#3", "#4"] },
+  "categories": [
+    { "id": "color", "label": "Color", "values": ["Red", "Blue", "Green", "Yellow"] }
+  ],
+  "clues": [
+    {
+      "text": "The Red item is in the first slot.",
+      "constraints": [{ "type": "at", "subject": "color:Red", "positions": "first" }]
+    },
+    {
+      "text": "The Blue item is in the second slot.",
+      "constraints": [{ "type": "at", "subject": "color:Blue", "positions": [2] }]
+    },
+    {
+      "text": "The Green item is in the third slot.",
+      "constraints": [{ "type": "at", "subject": "color:Green", "positions": [3] }]
+    },
+    {
+      "text": "The Yellow item is in the fourth slot.",
+      "constraints": [{ "type": "at", "subject": "color:Yellow", "positions": "last" }]
+    }
+  ]
+}

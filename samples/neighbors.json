@@ -1,0 +1,112 @@
+{
+  "title": "Neighbors",
+  "positions": { "label": "House", "labels": ["#1", "#2", "#3", "#4", "#5"] },
+  "categories": [
+    { "id": "color", "label": "Color", "values": ["black", "blue", "green", "red", "white"] },
+    {
+      "id": "nationality",
+      "label": "Nationality",
+      "values": ["French", "Swedish", "Norwegian", "Danish", "Japanese"]
+    },
+    { "id": "seafood", "label": "Seafood", "values": ["lobster", "octopus", "crab", "oyster", "shrimp"] },
+    { "id": "tree", "label": "Tree", "values": ["bamboo", "palm", "oak", "spruce", "pine"] },
+    { "id": "instrument", "label": "Instrument", "values": ["banjo", "drums", "flute", "vocals", "bongo"] },
+    { "id": "breakfast", "label": "Breakfast", "values": ["bagel", "croissant", "pancake", "egg", "waffle"] }
+  ],
+  "clues": [
+    {
+      "text": "The neighbor who plays the Vocals lives in the house with the Palm tree.",
+      "constraints": [{ "type": "same", "a": "instrument:vocals", "b": "tree:palm" }]
+    },
+    {
+      "text": "The house with the Bamboo tree is located somewhere between the one who enjoys Bagel for breakfast and the house with the Pine tree, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "tree:bamboo", "after": "breakfast:bagel", "before": "tree:pine" }
+      ]
+    },
+    {
+      "text": "The man who enjoys Egg for breakfast lives beside the Blue house.",
+      "constraints": [{ "type": "nextTo", "a": "breakfast:egg", "b": "color:blue" }]
+    },
+    {
+      "text": "The one who loves Bagel for breakfast is somewhere to the left of the man who plays the Banjo.",
+      "constraints": [{ "type": "leftOf", "a": "breakfast:bagel", "b": "instrument:banjo" }]
+    },
+    {
+      "text": "The house with the Oak tree is located somewhere between the man who loves Lobster and the house with the Pine tree, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "tree:oak", "after": "seafood:lobster", "before": "tree:pine" }
+      ]
+    },
+    {
+      "text": "The Bongo player lives adjacent to the Norwegian.",
+      "constraints": [{ "type": "nextTo", "a": "instrument:bongo", "b": "nationality:Norwegian" }]
+    },
+    {
+      "text": "The French is the person who loves Shrimp.",
+      "constraints": [{ "type": "same", "a": "nationality:French", "b": "seafood:shrimp" }]
+    },
+    {
+      "text": "The house shaded by the Bamboo is somewhere to the left of the neighbor who enjoys Egg for breakfast.",
+      "constraints": [{ "type": "leftOf", "a": "tree:bamboo", "b": "breakfast:egg" }]
+    },
+    {
+      "text": "The Japanese person lives in the White house.",
+      "constraints": [{ "type": "same", "a": "nationality:Japanese", "b": "color:white" }]
+    },
+    {
+      "text": "The Danish is the man who plays the Drums.",
+      "constraints": [{ "type": "same", "a": "nationality:Danish", "b": "instrument:drums" }]
+    },
+    {
+      "text": "The Crab fan lives in the house with the Pine tree.",
+      "constraints": [{ "type": "same", "a": "seafood:crab", "b": "tree:pine" }]
+    },
+    {
+      "text": "The Banjo player is located somewhere between the person who is Japanese and the Black house, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "instrument:banjo", "after": "nationality:Japanese", "before": "color:black" }
+      ]
+    },
+    {
+      "text": "The neighbor who enjoys Croissant for breakfast lives in the house with the Oak tree.",
+      "constraints": [{ "type": "same", "a": "breakfast:croissant", "b": "tree:oak" }]
+    },
+    {
+      "text": "The Bongo player is the one who enjoys Pancake for breakfast.",
+      "constraints": [{ "type": "same", "a": "instrument:bongo", "b": "breakfast:pancake" }]
+    },
+    {
+      "text": "The man who plays the Flute lives in the Black house.",
+      "constraints": [{ "type": "same", "a": "instrument:flute", "b": "color:black" }]
+    },
+    {
+      "text": "The Octopus fan is directly to the left of the one who plays the Banjo.",
+      "constraints": [{ "type": "immediatelyBefore", "a": "seafood:octopus", "b": "instrument:banjo" }]
+    },
+    {
+      "text": "The person who enjoys Bagel for breakfast is somewhere to the left of the man who plays the Drums.",
+      "constraints": [{ "type": "leftOf", "a": "breakfast:bagel", "b": "instrument:drums" }]
+    },
+    {
+      "text": "The neighbor who plays the Banjo is somewhere to the left of the neighbor who enjoys Oyster.",
+      "constraints": [{ "type": "leftOf", "a": "instrument:banjo", "b": "seafood:oyster" }]
+    },
+    {
+      "text": "The one who enjoys Waffle for breakfast is somewhere to the left of the one who plays the Drums.",
+      "constraints": [{ "type": "leftOf", "a": "breakfast:waffle", "b": "instrument:drums" }]
+    },
+    {
+      "text": "The man who is Danish lives in the Red house.",
+      "constraints": [{ "type": "same", "a": "nationality:Danish", "b": "color:red" }]
+    },
+    {
+      "text": "The one who loves Pancake for breakfast lives in the house with the Bamboo tree.",
+      "constraints": [{ "type": "same", "a": "breakfast:pancake", "b": "tree:bamboo" }]
+    },
+    {
+      "text": "The man who plays the Drums is immediately to the left of the Shrimp fan.",
+      "constraints": [{ "type": "immediatelyBefore", "a": "instrument:drums", "b": "seafood:shrimp" }]
+    }
+  ]
+}

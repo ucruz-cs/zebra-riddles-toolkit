@@ -1,0 +1,58 @@
+{
+  "title": "Passengers",
+  "positions": { "label": "Passenger", "labels": ["#1", "#2", "#3", "#4"] },
+  "categories": [
+    { "id": "shirt", "label": "Shirt", "values": ["Pink", "Red", "Black", "Yellow"] },
+    { "id": "name", "label": "Name", "values": ["Gabriel", "Owen", "Eugene", "Quentin"] },
+    { "id": "movie", "label": "Movie", "values": ["War", "Sci-Fi", "History", "Horror"] },
+    { "id": "ride", "label": "Ride", "values": ["Bethany", "Georgia", "Xena", "Amanda"] }
+  ],
+  "clues": [
+    {
+      "text": "The person who will get a ride from Amanda is in position 2.",
+      "constraints": [{ "type": "at", "subject": "ride:Amanda", "positions": [2] }]
+    },
+    {
+      "text": "The passenger watching the Horror movie is in position 2.",
+      "constraints": [{ "type": "at", "subject": "movie:Horror", "positions": [2] }]
+    },
+    {
+      "text": "The person wearing the Black shirt is somewhere to the left of the man watching the Sci-fi movie.",
+      "constraints": [{ "type": "leftOf", "a": "shirt:Black", "b": "movie:Sci-Fi" }]
+    },
+    {
+      "text": "Quentin is in the first seat.",
+      "constraints": [{ "type": "at", "subject": "name:Quentin", "positions": "first" }]
+    },
+    {
+      "text": "Eugene is getting a ride from Xena.",
+      "constraints": [{ "type": "same", "a": "name:Eugene", "b": "ride:Xena" }]
+    },
+    {
+      "text": "The man wearing the Red shirt is somewhere between the person wearing the Pink shirt and the person wearing the Black shirt, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "shirt:Red", "after": "shirt:Pink", "before": "shirt:Black" }
+      ]
+    },
+    {
+      "text": "Eugene is next to the man who will get a ride from Georgia.",
+      "constraints": [{ "type": "nextTo", "a": "name:Eugene", "b": "ride:Georgia" }]
+    },
+    {
+      "text": "The passenger watching the Sci-fi movie is getting a ride from Georgia.",
+      "constraints": [{ "type": "same", "a": "movie:Sci-Fi", "b": "ride:Georgia" }]
+    },
+    {
+      "text": "The person who will get a ride from Xena is immediately after the man wearing the Red shirt.",
+      "constraints": [{ "type": "immediatelyAfter", "a": "ride:Xena", "b": "shirt:Red" }]
+    },
+    {
+      "text": "The man watching the War movie is in position 3.",
+      "constraints": [{ "type": "at", "subject": "movie:War", "positions": [3] }]
+    },
+    {
+      "text": "Owen is getting a ride from Georgia.",
+      "constraints": [{ "type": "same", "a": "name:Owen", "b": "ride:Georgia" }]
+    }
+  ]
+}

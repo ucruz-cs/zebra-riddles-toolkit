@@ -1,0 +1,24 @@
+{
+  "name": "zebra-einstein-riddles",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local web app for solving zebra / Einstein logic-grid riddles by hand.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ucruz-cs/zebra-riddles-toolkit.git"
+  },
+  "homepage": "https://github.com/ucruz-cs/zebra-riddles-toolkit#readme",
+  "bugs": {
+    "url": "https://github.com/ucruz-cs/zebra-riddles-toolkit/issues"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

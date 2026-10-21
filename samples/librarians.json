@@ -1,0 +1,139 @@
+{
+  "title": "Librarians",
+  "positions": { "label": "Librarian", "labels": ["#1", "#2", "#3", "#4", "#5"] },
+  "categories": [
+    {
+      "id": "shirt",
+      "label": "Shirt",
+      "values": ["Black", "Blue", "Green", "Orange", "Red"]
+    },
+    {
+      "id": "name",
+      "label": "Name",
+      "values": ["Ursula", "Tiffany", "Deborah", "Eleanor", "Bethany"]
+    },
+    {
+      "id": "boy",
+      "label": "Boy",
+      "values": ["Yousef", "Theodore", "Ulysses", "Samuel", "Nicholas"]
+    },
+    {
+      "id": "genre",
+      "label": "Genre",
+      "values": ["Drama", "Fantasy", "Adventure", "Historical fiction", "Science fiction"]
+    },
+    {
+      "id": "age",
+      "label": "Age",
+      "values": ["46 years", "50 years", "58 years", "34 years", "38 years"]
+    },
+    {
+      "id": "dog",
+      "label": "Dog",
+      "values": ["Beagle", "Scottish Terrier", "German Shepherd", "Airedale Terrier", "Border Collie"]
+    }
+  ],
+  "clues": [
+    {
+      "text": "The librarian wearing the green shirt is somewhere between Deborah and the librarian who has an Airedale Terrier, in that order.",
+      "constraints": [
+        {
+          "type": "between",
+          "subject": "shirt:Green",
+          "after": "name:Deborah",
+          "before": "dog:Airedale Terrier"
+        }
+      ]
+    },
+    {
+      "text": "The librarian recommending a book to Yousef has a Scottish Terrier.",
+      "constraints": [{ "type": "same", "a": "boy:Yousef", "b": "dog:Scottish Terrier" }]
+    },
+    {
+      "text": "The librarian wearing the blue shirt is at one of the ends.",
+      "constraints": [{ "type": "at", "subject": "shirt:Blue", "positions": "ends" }]
+    },
+    {
+      "text": "The librarian recommending a book that features time travel is next to the librarian who has an Airedale Terrier.",
+      "constraints": [{ "type": "nextTo", "a": "genre:Science fiction", "b": "dog:Airedale Terrier" }]
+    },
+    {
+      "text": "The librarian recommending historical fiction is next to the librarian who has a Border Collie.",
+      "constraints": [{ "type": "nextTo", "a": "genre:Historical fiction", "b": "dog:Border Collie" }]
+    },
+    {
+      "text": "Bethany is somewhere between Theodore and Tiffany, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "name:Bethany", "after": "boy:Theodore", "before": "name:Tiffany" }
+      ]
+    },
+    {
+      "text": "The 46-year-old librarian is immediately before the librarian recommending a book to Ulysses.",
+      "constraints": [{ "type": "immediatelyBefore", "a": "age:46 years", "b": "boy:Ulysses" }]
+    },
+    {
+      "text": "The librarian recommending a book to Nicholas is in the first position.",
+      "constraints": [{ "type": "at", "subject": "boy:Nicholas", "positions": "first" }]
+    },
+    {
+      "text": "The librarian wearing the green shirt is somewhere between Deborah and the librarian recommending a drama, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "shirt:Green", "after": "name:Deborah", "before": "genre:Drama" }
+      ]
+    },
+    {
+      "text": "Ursula is next to the librarian wearing the orange shirt.",
+      "constraints": [{ "type": "nextTo", "a": "name:Ursula", "b": "shirt:Orange" }]
+    },
+    {
+      "text": "The librarian recommending an adventure book has an Airedale Terrier.",
+      "constraints": [{ "type": "same", "a": "genre:Adventure", "b": "dog:Airedale Terrier" }]
+    },
+    {
+      "text": "The librarian wearing the green shirt is somewhere between the youngest librarian and Bethany, in that order.",
+      "constraints": [
+        { "type": "between", "subject": "shirt:Green", "after": "age:min", "before": "name:Bethany" }
+      ]
+    },
+    {
+      "text": "The librarian recommending historical fiction is at one of the ends.",
+      "constraints": [{ "type": "at", "subject": "genre:Historical fiction", "positions": "ends" }]
+    },
+    {
+      "text": "The librarian wearing the green shirt is next to the librarian recommending a drama.",
+      "constraints": [{ "type": "nextTo", "a": "shirt:Green", "b": "genre:Drama" }]
+    },
+    {
+      "text": "Tiffany is next to the librarian recommending an adventure book.",
+      "constraints": [{ "type": "nextTo", "a": "name:Tiffany", "b": "genre:Adventure" }]
+    },
+    {
+      "text": "Eleanor is at one of the ends.",
+      "constraints": [{ "type": "at", "subject": "name:Eleanor", "positions": "ends" }]
+    },
+    {
+      "text": "The librarian wearing the black shirt is recommending an adventure book.",
+      "constraints": [{ "type": "same", "a": "shirt:Black", "b": "genre:Adventure" }]
+    },
+    {
+      "text": "The 38-year-old librarian is immediately after the librarian recommending a book to Theodore.",
+      "constraints": [{ "type": "immediatelyAfter", "a": "age:38 years", "b": "boy:Theodore" }]
+    },
+    {
+      "text": "The librarian who has a Border Collie is next to the librarian who has a German Shepherd.",
+      "constraints": [{ "type": "nextTo", "a": "dog:Border Collie", "b": "dog:German Shepherd" }]
+    },
+    {
+      "text": "The oldest librarian is somewhere to the right of the librarian wearing the green shirt.",
+      "constraints": [{ "type": "rightOf", "a": "age:max", "b": "shirt:Green" }]
+    },
+    {
+      "text": "The librarian wearing the green shirt is somewhere to the left of the librarian who has a German Shepherd.",
+      "constraints": [{ "type": "leftOf", "a": "shirt:Green", "b": "dog:German Shepherd" }]
+    },
+    {
+      "text": "The librarian who has a Scottish Terrier is next to the 50-year-old librarian.",
+      "constraints": [{ "type": "nextTo", "a": "dog:Scottish Terrier", "b": "age:50 years" }]
+    }
+  ]
+}
